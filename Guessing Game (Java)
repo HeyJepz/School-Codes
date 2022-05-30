@@ -1,0 +1,55 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[]args){
+        Random Num = new Random();
+        int GuessNumber = Num.nextInt(50); // Generate a random number from 1-50
+        int Tries = 0;
+        int Guess;
+        
+        Scanner Input = new Scanner(System.in);
+        
+        System.out.println("Guess a number from 1 to 50");
+        
+        // prompt the user to keep on guessing until the correct value is entered
+        do{
+            try{
+                Guess = Input.nextInt();
+                Tries++;
+                
+                if(Guess < 1 || Guess > 50){
+                    Tries--;
+                    throw new OutOfRangeException();
+                }
+                
+                // indicates whether the player is correct, too high, or too low 
+                if(Guess == GuessNumber){
+                    System.out.println("You got it in " + Tries + " attempt(s)!");
+                    break;
+                    
+                // display a message that indicates whether the player's guess is correct, too low, or too high;
+                }else if(Guess < GuessNumber){
+                    System.out.println("Too low. Try again.");
+                }else if(Guess > GuessNumber){
+                    System.out.println("Too high. Try again.");
+                }
+            }
+            
+            catch(InputMismatchException ex){
+                System.out.println("Invalid Input");
+                System.out.println("Guess a number from 1 to 50!");
+                Input.next(); // repeats the user input
+            }
+            catch(OutOfRangeException ex){
+                System.out.println(ex.getMessage());
+                
+            }
+        }while(true);
+    }
+}
+
+class OutOfRangeException extends Exception{
+    public OutOfRangeException(){
+        super("Out of range \nGuess a number from 1 to 50!");
+    }
+}
