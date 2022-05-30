@@ -1,0 +1,134 @@
+/******************************************************************************
+
+1. Croate a foider named Lastamo_Firattiamo (ex. Reyes Mark) in your local arive.
+2. Creste a new project named LabEzers. Set the project location to your own folder.
+3. The program shal:
+    • cortain an array of 10 multiple choice questions with three (3) choices each and
+    • require the user to choose among A B, or C:
+     Note: Cases are ignored. Lowercase lemevs are acceptable (a. b, c). equalsIgnoreCase() - used for string not char so dont use it
+ Create a try-catch structure to handle three (3) exceptiona. These are when the user inputs the
+ tollowing
+     • an invalid letter (not A. B, or C)
+     • a number or any special character
+     • blank (no answer)
+5. Prompt the user that he can answer again it any of the three (3) exceptions is thrown
+6. Display the score.
+
+https://www.youtube.com/watch?v=B6lZWCH27AM&ab_channel=JoviReyes
+
+*******************************************************************************/
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    int score = 0;
+	    String answer;
+        	    
+	    // Contain an array of 10 questions with 3 choices each
+	    // Choose among A, B, or C
+	    String [] Quest = {"Who was the King of the Pirates?" 
+    	                   +"\n   A. Gol D. Roger"
+    	                   +"\n   B. Monkey D. Luffy"
+    	                   +"\n   C. Go D. Usopp",
+	                       "Who is the captain of the Straw Hats?" 
+    	                   +"\n   A. Strawman Copper"
+    	                   +"\n   B. Monkey D. Luffy"
+    	                   +"\n   C. Joy Boy",
+    	                   "What is dangerous sea in One Piece?" 
+    	                   +"\n   A. Red Line"
+    	                   +"\n   B. East Blue"
+    	                   +"\n   C. Grand Line",
+                           "Who was the first member of the Straw Hats?" 
+    	                   +"\n   A. Usopp"
+    	                   +"\n   B. Nami"
+    	                   +"\n   C. Zoro",
+                           "What is last island of the most dangerous sea called?" 
+    	                   +"\n   A. Laugh Tale"
+    	                   +"\n   B. Last Stand"
+    	                   +"\n   C. New World",
+    	                   "What is the name of the skeleton strawhat crewmember?" 
+    	                   +"\n   A. Brook"
+    	                   +"\n   B. Skelly"
+    	                   +"\n   C. Laboon",
+    	                   "What real life Country is the Land of Wano?" 
+    	                   +"\n   A. America"
+    	                   +"\n   B. China"
+    	                   +"\n   C. Japan",
+    	                   "How did the strawhats seperate before the time-skip?" 
+    	                   +"\n   A. Escaped from Sabaody"
+    	                   +"\n   B. Teleported away by Kuma"
+    	                   +"\n   C. Got into a fight with each other",
+    	                   "Who does Luffy admire?" 
+    	                   +"\n   A. Red-haired Shanks"
+    	                   +"\n   B. Monkey D. Garp"
+    	                   +"\n   C. Akainu",
+    	                   "How many crewmates does the Strawhats now (including the captain) have?" 
+    	                   +"\n   A. Five"
+    	                   +"\n   B. Nine"
+    	                   +"\n   C. Ten",
+	    };       
+	    
+	    String [] Ans = {"A", "B", "C", "C", "A", "A", "C", "B", "A", "C"};
+	    
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Quiz Game");
+		    
+		for(int i = 0; i < 10; i++){
+		    
+		    try{
+    		    System.out.println(i + 1 +". "+ Quest[i]);
+    		    System.out.print("Your answer: ");
+        	    answer = sc.nextLine();
+        	    System.out.println("");
+        	   
+        	    // if answer is blank throw this exception
+        	    if(answer.equals("") || answer.equals(" "))
+        	       throw new InvalidBlankSpace();
+        	  
+        	    // required to answer A, B, or C, and cases are ignored
+        	    if(answer.equalsIgnoreCase("A") || answer.equalsIgnoreCase("B") || answer.equalsIgnoreCase("C")){ 
+        	       if(answer.equalsIgnoreCase(Ans[i]))
+        	           score++;
+				// for ASCII chart, integer number of characters 
+				// else if(!(answer.charAt(0) >= 65 && answer.charAt(0) <= 90 || answer.charAt(0) >= 97 && answer.charAt(0) <= 122))
+        	    }else if(!Character.isLetter(answer.charAt(0))){
+        	       // if the answer is not A-Z letters
+        	       throw new InvalidCharacterException();       
+        	    }else{
+        	       // if the answer is neither A, B, or C
+        	       throw new InvalidLetterException();
+        	    }       
+        	    
+        	    
+		    }catch(InvalidLetterException e){
+    		    System.out.println(e.getMessage());
+    		    --i;
+    		}catch(InvalidBlankSpace e){
+    		    System.out.println(e.getMessage());
+    		    --i;
+    		}catch(InvalidCharacterException e){
+    		    System.out.println(e.getMessage());
+    		    --i;
+    		}
+		}
+		System.out.println("Your Score is: " + score + " out of 10");
+	}
+}
+
+class InvalidLetterException extends Exception{
+    public InvalidLetterException(){
+        super("Invalid Letter. Please choose among A, B, or C. \n");
+    }
+}
+
+class InvalidCharacterException extends Exception{
+    public InvalidCharacterException(){
+        super("Invalid Character. No numbers or special characters allowed. \n");
+    }
+}
+
+class InvalidBlankSpace extends Exception{
+    public InvalidBlankSpace(){
+        super("No blank space allowed. Please choose among A, B, or C to proceed.");
+    }
+}
