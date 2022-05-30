@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class LabExer2
+{
+    
+   // static variables so you can use it in the main method
+   static String itemName;
+   static double itemPrice, amountDue;
+   static int itemQuantity;
+   
+   public static void main(String[] args) {
+	    LabExer2 lab = new LabExer2();
+		
+		  // will first run the input.
+		  lab.readInput();
+		
+		  // then set those inputs to the global variables.
+		  lab.setItemName(itemName);
+		  lab.setTotalCost(itemQuantity, itemPrice);
+		
+		  // both get methods will be used for the output.
+		  lab.writeOutput();
+		  System.out.println("\nAmount due is " + lab.getTotalCost());
+	}
+	
+	public void setItemName(String newItemName){ 
+	    itemName = newItemName;
+	}
+	
+	public void setTotalCost(int quantity, double price){
+	    amountDue = quantity * price;
+	}
+	
+	public void readInput(){
+	    Scanner s = new Scanner(System.in);
+	    
+	    System.out.println("Enter the name of the item you are purchasing.");
+	    this.itemName = s.nextLine();
+	    System.out.println("Enter the quantity and price seperated by a space.");
+	    this.itemQuantity = s.nextInt();
+	    this.itemPrice = s.nextDouble();
+	}
+	
+	public String getItemName(){
+	    return itemName;
+	}
+	
+	public double getTotalCost(){
+	    return amountDue;
+	}
+	
+	public void writeOutput(){
+        System.out.print("You are purchasing " + itemQuantity +" " + getItemName() +"(s) at "+ itemPrice +" each.");
+	}
+}
