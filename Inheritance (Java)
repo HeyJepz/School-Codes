@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+class RunEmployee{
+    public static void main(String[] args) {
+        FullTimeEmployee F_emp = new FullTimeEmployee();
+        PartTimeEmployee P_emp = new PartTimeEmployee(); 
+        Employee emp = new Employee(); // instance to access getName()
+
+        emp.setName();
+        
+        System.out.println("Press F for Full time or P for Part Time");
+        char choice = F_emp.sc.next().charAt(0);
+
+        if(choice == 'F'){
+            F_emp.setMonthlySalary();
+
+            System.out.println(emp.getName());
+            System.out.printf("%.2f", F_emp.getMonthlySalary());
+        }
+
+        if(choice == 'P'){
+            P_emp.setWage();
+
+            System.out.println(emp.getName());       
+            System.out.printf("%.2f", P_emp.getWage());
+        }
+    }
+}
+
+class Employee { 
+    Scanner sc = new Scanner(System.in);// ineherited by both derived classes
+    String name;
+
+    // 1. User Input
+    public void setName(){
+        System.out.println("Enter name:");
+        name = sc.nextLine();
+    }
+
+    public String getName(){
+        System.out.print("Name: ");
+        return name;
+    }
+}
+
+class FullTimeEmployee extends Employee{
+    double monthlySalary;
+    
+    void setMonthlySalary(){
+        System.out.println("Enter your Monthly Salary:");
+        monthlySalary = sc.nextDouble();
+    }
+
+    double getMonthlySalary(){
+        System.out.print("Salary: ");
+        return monthlySalary;
+    }
+}
+
+class PartTimeEmployee extends Employee{
+    double ratePerHour, wage;
+    int hourseWorked;
+
+    // Computes for the wage  
+    void setWage(){
+        System.out.println("Enter rate per hour and no. of hours worked seperated by space:");
+        System.out.println("Sample: 107.50 13");
+        ratePerHour = sc.nextDouble();
+        hourseWorked = sc.nextInt();
+
+        wage = ratePerHour * hourseWorked;
+    }
+
+    double getWage(){
+        System.out.print("Wage: ");
+        return wage;
+    }
+}
