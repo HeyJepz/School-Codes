@@ -1,0 +1,61 @@
+public class Main
+{
+	public static void main(String[] args) {
+	    int i, j, spc = 2*6-2;
+		System.out.println("Pattern I\n");
+		
+		for(i = 1; i <= 6; i++){
+		   
+		    for(j = 1; j <= i; j++){
+		        System.out.print(j + " ");
+		    } 
+		    System.out.println(" ");
+		}
+		
+		System.out.println("\nPattern II\n");	
+		
+		for(i = 6; i >= 1; i--){ // col
+            
+		    for(j = 1; j <= i; j++){ // row
+		        System.out.print(j + " ");
+		    } 
+		    System.out.println(" ");
+		}
+		
+		System.out.println("\nPattern III\n");	
+		
+		for (i = 1; i <= 6; i++) {
+            
+            for(j = 0; j < spc; j++){ 
+                System.out.print(" ");
+            }
+            
+            spc -= 2; 
+
+            for (j = i; j >= 1; j--) {
+                System.out.print(j + " ");
+                
+            }
+            System.out.println();
+        }
+		
+		System.out.println("\nPattern IV\n");	
+		for(i = 6; i >= 1; i--){
+
+            for(j = 6; j > i; j--){
+
+                System.out.print(" ");
+                System.out.print(" ");
+
+            }
+
+		    for(j = 1; j <= i; j++){
+		        
+		        System.out.print(j + " ");
+		    
+		    }      
+            
+		    System.out.println("");
+		}
+	}
+}
