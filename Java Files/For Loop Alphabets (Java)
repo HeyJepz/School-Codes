@@ -1,0 +1,36 @@
+/******************************************************************************
+System.out.println("      J  DDDDD         J       A      V       V     A      ");
+System.out.println("      J  D    D        J      A A      V     V     A A     ");
+System.out.println("      J  D    D        J     A   A      V   V     A   A    ");
+System.out.println(" J    J  D    D   J    J    AAAAAAA      V V     AAAAAAA   ");
+System.out.println(" JJJJJJ  DDDDD    JJJJJJ   A       A      V     A       A  ");
+1-60 column
+1-5 row
+*******************************************************************************/
+public class Main
+{
+	public static void main(String[] args) {
+	    int row, column;
+	    System.out.println(" ");
+	    for(row = 0; row < 5; row++){
+	        for(column = 0; column < 60; column++){
+	            if(column == 1 && (row == 3 || row == 4) || row == 4 && (column > 0 && column < 6) || column == 6 ){
+	                System.out.print("J");         
+	            }else if(column == 9 || (row == 0 || row == 4) && (column > 9 && column < 14) || column == 14 && (row != 0 && row != 4)){
+	                System.out.print("D");    
+	            }else if(column == 17 && (row == 3 || row == 4) || row == 4 && (column > 17 && column < 22) || column == 22){
+	                System.out.print("J"); 
+	            }else if((column == 25 || column == 33) && row == 4 || (column > 25 && column < 33) && row == 3 || (column == 27 || column == 31) && row == 2 || (column == 28 || column == 30) && row == 1 || column == 29 && row == 0){
+	                System.out.print("A"); 
+	            }else if((column == 36 || column == 44) && row == 0 || (column == 37 || column == 43) && row == 1 || (column == 38 || column == 42) && row == 2 || (column == 39 || column == 41) && row == 3 || column == 40 && row == 4){
+	                System.out.print("V"); 
+	            }else if((column == 47 || column == 55) && row == 4 || (column > 47 && column < 55) && row == 3 || (column == 49 || column == 53) && row == 2 || (column == 50 || column == 52) && row == 1 || column == 51 && row == 0){
+	                System.out.print("A"); 
+	            }else{
+	                System.out.print(" ");
+	            }
+	        }
+	        System.out.println(" ");
+	    }
+	}
+}
