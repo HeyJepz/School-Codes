@@ -1,0 +1,95 @@
+import java.nio.file.*;
+import java.io.*;
+import java.util.Scanner;
+import static java.nio.file.StandardOpenOption.*;
+/* 
+the program will:
+    a. ask the user to select between(2) options (ok)
+        I. register
+        - User input for username and password (ok)
+        - shall be saved in records.txt file  (ok)
+        - only alphanumeric characters are allowed (ok) 
+                
+        II. Login
+        - User is asked for username and password (ok)
+        - validate using the (records).txt file created (ok)
+        - if both are correct display message "Successfully logged in."
+        - else display "Incorrect username or password." 
+*/ 
+public class TaskPerf6 {
+    public static void main(String[] args) {
+        String username, password;
+        int choice;
+        Scanner sc = new Scanner(System.in);
+
+        // created a path file 
+        Path file = Paths.get("C:\\Users\\user\\Documents\\Java Programs\\records.txt");
+        
+        try{
+            
+            // then using newOutputStream to be able to write in the file, then CREATE in the argument to create the file if it does not exist yet
+            OutputStream output = new BufferedOutputStream(Files.newOutputStream(file, CREATE));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
+
+            // seperate from the output, and this part is for reading the file 
+            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\user\\Documents\\Java Programs\\records.txt"));
+
+            System.out.println("Type '1' to Register, Type '2' to Login.");
+            choice = sc.nextInt();
+            
+            // ask the user to select between(2) options.
+            if(choice == 1){
+                // User input for username and password.
+                System.out.println("Welcome please register your account.");
+                System.out.print("Username: ");
+                sc.nextLine(); // use this so you're UI won't skip the first requied input.
+                username = sc.nextLine();
+
+                System.out.print("Password: ");
+                password = sc.nextLine();
+                
+                // only alphanumeric characters are allowed
+                if(username.matches("[A-Za-z0-9]+") && password.matches("[A-Za-z0-9]+")){
+                    
+                    // shall be saved in records.txt file.
+                    writer.write(username, 0, username.length());
+                    writer.newLine();
+                    writer.write(password, 0, password.length());
+                    writer.close();
+                    System.out.println("Successfully registered!");
+                }else{
+                    System.out.println("Only alphanumeric characters are allowed.");
+                }
+            }else if(choice == 2){
+                // User is asked for username and password
+                System.out.println("Welcome please Login your account.");
+                System.out.print("Username: ");
+                sc.nextLine();
+                username = sc.nextLine();
+
+                System.out.print("Password: ");
+                password = sc.nextLine();
+
+                // validate using the text file created in the Register option.       
+                // we used readLine() to read the text Line by Line since we can only have 1 of each      
+                if(username.equals(br.readLine())){
+                    if(password.equals(br.readLine())){
+                        // if both are correct display message:
+                        System.out.println("Successfully logged in.");
+                    }else{
+                        // else display message:
+                        System.out.println("Incorrect username or password.");
+                    }
+                }else{
+                    // else display:
+                    System.out.println("Incorrect username or password.");
+                }
+
+            }else{
+                System.out.println("Please choose between 1 and 2.");
+            }
+        }catch(IOException e){
+            System.out.println("Message: " + e);
+        }
+    }
+}
