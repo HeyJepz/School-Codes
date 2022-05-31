@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class FactorialCalculator
+{
+    public static void main(String[] args) {
+        int posInteger, count = 1;
+		Scanner input = new Scanner(System.in);
+
+        System.out.println("<------ Factorial Calculator ------>");
+        
+        // Step 4. Repeat the process five(5) times.
+        while(count <= 5){
+            System.out.print("Enter a positive integer: ");
+            
+            // Step 1. Enter a positive number
+            posInteger = input.nextInt();
+            int factorial = 1;
+            
+            // Step 2. Check if the entered integer is positive or negative
+            if(posInteger > 0){
+                System.out.print(posInteger + "! = ");
+
+                for(int i = 1; i <= posInteger; i++){    
+                    System.out.print(i);
+                    
+                    if(i <= posInteger - 1)
+                        System.out.print(" x ");
+                    
+                    // Step 3. if positive calculate the factorial the positive integer input
+                    factorial *= i;
+                }
+                
+                // then display the result
+                System.out.println();
+                System.out.println("The factorial of " + posInteger + " is: " + factorial);
+            
+            
+            // if negative display an appropriate error message
+            }else{
+                System.out.println("Invalid Input! Program stopped!");
+            }
+            count++;
+        }
+    }
+}
