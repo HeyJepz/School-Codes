@@ -1,0 +1,41 @@
+//Current attack speed = Base attack speed * (1 + (Bonus attack speed % * (Level - 1)))
+//The variable for level should be of int type. The bonus attack speed % should be converted to 
+//decimal (divide by 100) before multiplying by the level. For example, if the user enters 4% for 
+//the bonus attack speed, the formula will use 0.04 instead of 4. Round the current attack speed to the nearest three (3) decimal places.
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String args[]) {
+        double BaseAtkSpd, Percent, BonusAtkSpd, CurrentAtkSpd;
+        int level;
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Enter the base attack speed: ");
+        BaseAtkSpd = input.nextDouble();
+        
+        System.out.print("Enter the bonus attack speed %: ");
+        Percent = input.nextDouble();
+        // nextDouble can also take a whole number
+        
+        // since its a Double data type, it can be multiplied with Double variables
+        BonusAtkSpd = Percent / 100;
+        
+        System.out.print("Enter the level: ");
+        level = input.nextInt();
+        
+        // level is subtracted by 1, then multiplied by the value of BonusAtkSpd, added 1 and multiplied with the BaseAtkSpd.
+        CurrentAtkSpd = BaseAtkSpd * (1 + (BonusAtkSpd * (level - 1))); 
+        
+        // used %.3f to round the number to the nearest 3 decimals.
+        System.out.printf("The character's current attack speed is %.3f.", CurrentAtkSpd);
+        }
+}
+/* Sample output:
+Enter the base attack speed: 0.658
+
+Enter the bonus attack speed %: 4
+
+Enter the level: 10
+
+The character's current attack speed is 0.895.
+*/
