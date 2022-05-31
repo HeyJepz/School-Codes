@@ -1,0 +1,58 @@
+/******************************************************************************
+
+Create a Java program that determines if two (2) words rhyme. 
+
+1. Write the import statements to be able to use Scanner, Pattern, and Matcher.
+2. Enable user input.
+3. Create three (3) String variables.
+    - word1 shall store the first word.
+    - word2 shall store the second word.
+    - sub shall store the last two (2) letters of word1.
+4. Initialize a Pattern as defined by the regular expression "[______]{___}" + sub + " " For the first blank, allow uppercase and lowercase letters. 
+   For the second blank, allow either 1 or 2 letters before sub (contains the last two (2) letters of word1).
+5. Initialize a Matcher to store a possible match between your pattern and word2.
+6. Use the matches() method to check if the two (2) words rhyme.
+ 
+*******************************************************************************/
+import java.util.regex.*;
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    // 1. and 2.
+	    String word1, word2, sub;
+	    Scanner sc = new Scanner(System.in);
+	    
+	    // 3.
+	    System.out.print("Enter the first word: ");
+	    word1 = sc.nextLine();
+	    
+	    System.out.print("Enter the second word: ");
+	    word2 = sc.nextLine();
+	    
+	    sub = word1.substring(word1.length() - 2, word1.length());
+	    int count = word2.length() - 2;
+	    
+	    // 4. and 5.
+	    Pattern pt = Pattern.compile("[a-zA-Z]{1,2}" + sub);
+	    Matcher mc = pt.matcher(word2);
+	    
+	    // 6.
+	    if(mc.matches()){
+		    System.out.println(word2 + " rhymes with " + word1);
+	    }else{
+	        System.out.println("I'm not sure! Sorry!");
+	    }
+	    
+	    // having fun lol
+	    if(count <= 0)
+	        System.out.println("//word2 has less than "+count+" letters before '"+sub+"'");
+	    if(count == 1)
+	        System.out.println("//word2 only has "+count+" letters before '"+sub+"'");
+	    if(count == 2)
+	        System.out.println("//word2 has "+count+" letters before '"+sub+"'");
+	    if(count >= 3)
+	        System.out.println("//word2 has more than "+count+" letters before '"+sub+"'");
+	}
+}
