@@ -1,0 +1,84 @@
+/******************************************************************************
+
+Create a Java program that asks the user to enter three (3) first names then display the following:
+
+1. All the possible two-name combinations (Ask the user to select a name by entering 1 to 6.)
+
+2. The initials of the chosen combined name (Ex. John Ryan = JR)
+
+3. Suggested username based on the combined name (The name will be in small letters 
+and the space will be changed to underscore. Ex. John Ryan = john_ryan)
+
+
+*******************************************************************************/
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    String name_1, name_2, name_3;
+	    String comb1, comb2, comb3, comb4, comb5, comb6;
+	    int select;
+	    
+	    Scanner input = new Scanner(System.in);
+	    
+	    // Asks the user to enter three (3) first names
+		System.out.println("Enter three first names:");
+		name_1 = input.nextLine();
+		name_2 = input.nextLine();
+		name_3 = input.nextLine();
+		
+		// All the possible two-name combinations (Ask the user to select a name by entering 1 to 6.)
+		System.out.println("Possible names are:");
+		comb1 = name_1.concat(" " + name_2);
+		comb2 = name_1.concat(" " + name_3);
+		
+		comb3 = name_2.concat(" " + name_1);
+		comb4 = name_2.concat(" " + name_3);
+		
+		comb5 = name_3.concat(" " + name_1);
+		comb6 = name_3.concat(" " + name_2);
+		
+        System.out.println("1 - " + comb1);
+        System.out.println("2 - " + comb2);
+        System.out.println("3 - " + comb3);
+        System.out.println("4 - " + comb4);
+        System.out.println("5 - " + comb5);
+        System.out.println("6 - " + comb6);
+        
+        System.out.print("Enter 1-6 to select a name: ");
+        select = input.nextInt();
+        
+        switch(select){
+            case 1:
+                // The initials of the chosen combined name
+                System.out.println("The initials for " + comb1 + " is " + name_1.charAt(0)+name_2.charAt(0) );
+                
+                /* Suggested username based on the combined name (The name will be in small letters 
+                   and the space will be changed to underscore.) */
+                System.out.println("Suggested username: " + comb1.toLowerCase().replace(" ", "_"));
+                break;
+            case 2:
+                System.out.println("The initials for " + comb2 + " is " + name_1.charAt(0)+name_3.charAt(0) );
+                System.out.println("Suggested username: " + comb2.toLowerCase().replace(" ", "_"));
+                break;
+            case 3:
+                System.out.println("The initials for " + comb3 + " is " + name_2.charAt(0)+name_1.charAt(0) );
+                System.out.println("Suggested username: " + comb3.toLowerCase().replace(" ", "_"));
+                break;
+            case 4:
+                System.out.println("The initials for " + comb4 + " is " + name_2.charAt(0)+name_3.charAt(0) );
+                System.out.println("Suggested username: " + comb4.toLowerCase().replace(" ", "_"));
+                break;
+            case 5:
+                System.out.println("The initials for " + comb5 + " is " + name_3.charAt(0)+name_1.charAt(0) );
+                System.out.println("Suggested username: " + comb5.toLowerCase().replace(" ", "_"));
+                break;
+            case 6:
+                System.out.println("The initials for " + comb6 + " is " + name_3.charAt(0)+name_2.charAt(0) );
+                System.out.println("Suggested username: " + comb6.toLowerCase().replace(" ", "_"));
+                break;
+        }    
+        
+	}
+}
