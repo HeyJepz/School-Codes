@@ -42,7 +42,7 @@ class Employee {
         return name;
     }
 }
-
+ 
 class FullTimeEmployee extends Employee{
     double monthlySalary;
     
