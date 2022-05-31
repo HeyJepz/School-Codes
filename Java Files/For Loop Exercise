@@ -1,0 +1,24 @@
+public class Main
+{
+	public static void main(String[] args) {
+		int col, row, i, j;
+		System.out.println("\t    Multiplication Table");
+		
+		System.out.print("\t");
+		for(col = 1; col <= 9; col++){
+		    System.out.print(" " + col + " ");
+		}
+		
+		System.out.println("\n _________________________________");
+		for(i=1;i<=9;i++){
+		    System.out.print(" " + i + " |\t");
+            for(j=1;j<=9;j++){
+                if(i*j < 10)
+                    System.out.print(" " + i*j + " ");
+                else
+                    System.out.print(i*j + " ");
+            }
+            System.out.println();
+        }
+	}
+}
