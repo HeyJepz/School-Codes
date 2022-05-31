@@ -1,0 +1,43 @@
+// Inner class example 
+
+public class Main{
+    
+    private int listingNumber;
+    private double price;
+    private HouseData hData;
+    
+    // constructor
+    public Main(int num, double price, String address, int sqFt) {
+        listingNumber = num;
+        this.price = price;
+        
+        // instantiates the HouseData inner class 
+        hData = new HouseData(address, sqFt);
+    }
+    
+    // local method to display
+    public void display(){
+        System.out.println("Listing number #" + listingNumber + " Sellng for Php" + price);
+        System.out.println("Address: " + hData.streetAddress);
+        System.out.println(hData.squareFeet + " square feet");
+    }
+    
+    // inner class
+    private class HouseData{
+        private String streetAddress;
+        private int squareFeet;
+        
+        // constructor
+        public HouseData(String Address, int sqFt){
+            streetAddress = Address;
+            squareFeet = sqFt;
+        }
+    }
+    
+	public static void main(String[] args) {
+	    // instantiates and calls the constructor with fixed arguments
+	    Main m_class = new Main(02000164047, 350100.45, "Valenzuela City", 1645);
+	    
+	    m_class.display();
+	}
+}
