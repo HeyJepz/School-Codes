@@ -32,7 +32,7 @@ public class Main
     		        System.out.print(Bus_seats[row][column] + "\t");
     		    }
     		    System.out.println();
-    		}
+    		} 
     		
     		System.out.print("Enter row and column number to reserve seperated by space (Enter a negative number to exit): ");
         	row = sc.nextInt();
