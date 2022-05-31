@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main{
+	public static void main(String[] args) {
+		double male, female, totalMale, totalFemale;
+		Scanner input = new Scanner(System.in);
+		
+		// use double for male and female input since it loses the 
+		// decimal value once calculated in this formula
+		
+		System.out.print("Enter the number of males: ");
+		male = input.nextDouble();
+		
+		System.out.print("Enter the number of females: ");
+		female = input.nextDouble();
+		
+		// use narrowing casting to return from double to int the total students in a whole number form
+		int totalStudents = (int)(male + female);
+		
+		// use formula: number * 100 / total
+		totalMale = male * 100 / totalStudents;
+		totalFemale = female * 100 / totalStudents;
+		
+		System.out.println("Number of students = " + totalStudents);
+ 		System.out.printf("Male = %.2f%%\n", totalMale);
+ 		System.out.printf("Female = %.2f%%\n", totalFemale);
+
+	}
+}
