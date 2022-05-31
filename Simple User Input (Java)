@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class GrossPayCalculator{
+    public static void main(String[] args) {
+		int Hrs_Worked, Hrs_Overtime;
+	    Double RatePerHr, OvertimePay, BasicPay, total;
+		Scanner input = new Scanner(System.in);
+		
+		System.out.print("Enter employee name: ");
+		String employeeName = input.nextLine();
+		
+		System.out.print("Press F for Full Time or P for Part Time: ");
+		char workTime = input.next().charAt(0);
+		
+		if(workTime == 'P' || workTime == 'p'){
+		    System.out.println("--- Part Time Employee ---");
+		    
+		    System.out.print("Enter rate per hour: ");
+	        RatePerHr = input.nextDouble();
+	        
+	        System.out.print("Enter no. of hours worked: ");
+	        Hrs_Worked = input.nextInt();
+	        
+	        System.out.print("Enter no. of overtime: ");
+	        Hrs_Overtime = input.nextInt();
+	        
+	        OvertimePay = Hrs_Overtime * (RatePerHr * 1.25);
+	        BasicPay = RatePerHr * Hrs_Worked;
+	        total = BasicPay + OvertimePay;
+	        
+	        System.out.println("_______________________________________");
+	        System.out.println("Employee Name: " + employeeName);
+	        System.out.println("Basic Pay: " + BasicPay);
+	        System.out.println("Overtime Pay: " + OvertimePay);
+	        System.out.println("_______________________________________");
+	        System.out.println("Gross Pay: " + total);
+	        
+		}else if(workTime == 'F' || workTime == 'f'){
+		    System.out.println("--- Full Time Employee ---");
+		    System.out.print("Enter Basic Pay: ");
+		    BasicPay = input.nextDouble();
+		    
+		    System.out.println("_______________________________________");
+	        System.out.println("Employee Name: " + employeeName);
+	        System.out.println("Basic Pay: " + BasicPay );
+	        System.out.println("_______________________________________");
+	        System.out.println("Gross Pay: " + BasicPay);
+	        
+		}else{
+		    System.out.print("Error: Invalid Letter");
+		}
+	}
+}
