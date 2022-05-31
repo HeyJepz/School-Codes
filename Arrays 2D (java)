@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    int row, column, i, j;
+	    boolean exit = true;
+	    
+	    char [][] Bus_seats = new char[10][4];
+	    Scanner sc = new Scanner(System.in);
+	    
+	    //fills the entire array
+	    for (char[] rows: Bus_seats){
+            Arrays.fill(rows, '*');
+	    }
+		
+		do{
+		    System.out.println("Bus Seat Reservation:");
+		    System.out.println("\tCol 1   col 2   col 3   col 4");
+		    
+		    //the loop to display the expected output
+    		for(row = 0; row < Bus_seats.length; row++){
+               
+                if(row < 9){
+                    System.out.print("Row " + (row + 1) + "   |");
+                }else{
+                    System.out.print("Row " + (row + 1) + "  |");
+                }
+                
+                
+    		    for(column = 0; column < Bus_seats[row].length; column++){
+    		        System.out.print(Bus_seats[row][column] + "\t");
+    		    }
+    		    System.out.println();
+    		}
+    		
+    		System.out.print("Enter row and column number to reserve seperated by space (Enter a negative number to exit): ");
+        	row = sc.nextInt();
+        	
+        	//loops until the user enters a negative input
+        	if(row < 0){
+        	    System.out.println("Program exit!");
+        	    exit = false;
+        	    break;
+        	}
+        	column = sc.nextInt();
+        	
+            //indicates what seat row and column to reserve
+        	Bus_seats[row - 1][column - 1] = 'X';
+        	System.out.println();
+        	
+		}while(exit);
+	}
+}
