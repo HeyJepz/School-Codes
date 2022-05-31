@@ -1,0 +1,39 @@
+/******************************************************************************
+
+Create a Java program that asks the user to input a student number. The format of the student number is a sequence of the following:
+
+Four (4) digits
+A dash
+Two (2) digits
+A dash
+Three (3) digits
+Display a welcome message if the student number is valid; otherwise, 
+show an appropriate error message. Do not copy the welcome message in the sample output.
+
+*******************************************************************************/
+
+// regex library only has 2 classes: Matcher and Pattern
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+	  String Snum;
+	  Scanner sc = new Scanner(System.in);
+		System.out.print("Enter your student number: ");
+		
+		Snum = sc.nextLine();
+		Pattern pt = Pattern.compile("[0-9]{4}-[0-9]{2}-[0-9]{3}");
+		Matcher mc = pt.matcher(Snum);
+		
+		if(mc.matches() == true){
+		    System.out.println("Welcome student " + Snum + "!");
+		}else{
+		    System.out.println("Invalid number, please try again.");
+		}
+		
+		
+	}
+}
