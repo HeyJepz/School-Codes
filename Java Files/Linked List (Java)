@@ -1,0 +1,37 @@
+// Linked list implementation in Java
+
+class Main {
+  // Creating a node
+  Node head;
+
+  static class Node {
+    String value;
+    Node next;
+
+    Node(String d) {
+      value = d;
+      next = null;
+    }
+  }
+
+  public static void main(String[] args) {
+    Main linkedList = new Main();
+
+    // Assign value values
+    linkedList.head = new Node("First");
+    Node second = new Node("Second");
+    Node third = new Node("Third");
+    Node fourth = new Node("Fourth");
+
+    // Connect nodess
+    linkedList.head.next = fourth;
+    fourth.next = second;
+    second.next = third;
+
+    // printing node-value
+    while (linkedList.head != null) {
+      System.out.print(linkedList.head.value + " ");
+      linkedList.head = linkedList.head.next;
+    }
+  }
+}
