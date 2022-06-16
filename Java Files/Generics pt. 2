@@ -1,0 +1,27 @@
+// 4. Create another class named TriPrismDemo.
+public class TriPrismDemo {
+    public static void main(String[] args) {
+        double vol1, vol2;
+        // 5. In its main method, instantiate two (2) TriPrism objects named tp1 (Integer) and tp2 (Double).
+        TriPrism<Integer>tp1 = new TriPrism<>();
+        TriPrism<Double> tp2 = new TriPrism<>();
+
+        System.out.println("Triangular Prism 1");
+        // 6. Use the setter methods to set the values of the dimensions. 
+        tp1.setLength(10);
+        tp1.setBase(7);
+        tp1.setHeight(5);
+
+        // 7. Calculate and display the volume of the two (2) TriPrism objects using the getter methods. Refer to the formula provided above.
+        vol1 = tp1.getLength() * (0.5 * tp1.getBase() * tp1.getHeight());
+        System.out.println("The volume of the triangular prism is: " + vol1);
+
+        System.out.println("Triangular Prism 2");
+        tp2.setLength(9.10);
+        tp2.setBase(6.25);
+        tp2.setHeight(4.20);
+
+        vol2 = tp2.getLength() * (0.5 * tp2.getBase() * tp2.getHeight());
+        System.out.println("The volume of the triangular prism is: " + vol2);
+    }
+}
