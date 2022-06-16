@@ -1,0 +1,35 @@
+// 1. Create a generic class called TriPism.
+public class TriPrism <T>{
+    // 2. Declare three (3) private variables named length, base, and height.
+    private T length;
+    private T base;
+    private T height; 
+
+    // 3. Add three (3) pairs of getters and setters to retrieve and set the values of the variables mentioned above.
+    public void setLength(T length){
+        this.length = length;
+    }
+
+    public void setBase(T base){
+        this.base = base;
+    }
+
+    public void setHeight(T height){
+        this.height = height;
+    }
+
+    public T getLength(){
+        System.out.println("Length: " + length);
+        return length;
+    }
+
+    public T getBase(){
+        System.out.println("Base: " + base);
+        return base;
+    }
+    
+    public T getHeight(){
+        System.out.println("Height: " + height);
+        return height;
+    }
+}
